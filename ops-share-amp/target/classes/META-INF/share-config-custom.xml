@@ -1,0 +1,33 @@
+<!-- Share configuration related to this particular Share module extension, such as:
+     - Doclib action config
+     - Form config
+     - Aspect and Type config
+
+    Note. Any configuration related to the whole Share.war webapp
+           (i.e. not specific to this share extension) should be
+            placed in the environment specific config:
+             alfresco-allinone/share/src/main/resources/alfresco/web-extension/share-config-custom.xml file
+     -->
+<alfresco-config>
+  <config evaluator="string-compare" condition="DocLibActions">
+    <actions>
+      <action id="opsRender" type="javascript" label="actions.ocs.render" icon="ops">
+        <param name="function">onActionSimpleRepoAction</param>
+        <permissions>
+          <permission allow="true">Write</permission>
+        </permissions>
+        <param name="action">opsAction</param>
+        <param name="successMessage">message.ops.successed</param>
+        <param name="failureMessage">message.ops.failure</param>
+      </action>
+    </actions>
+    <actionGroups>
+      <actionGroup id="document-browse">
+        <action index="900" id="opsRender" />
+      </actionGroup>
+      <actionGroup id="document-details">
+        <action index="900" id="opsRender" />
+      </actionGroup>
+    </actionGroups>
+  </config>
+</alfresco-config>
